@@ -38,11 +38,11 @@ class MyHomePage extends StatelessWidget {
                       child: Row(children: <Widget>[
                         Container(
                           child: Text(tr.value.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                   color: Colors.purple)),
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 10),
                           decoration: BoxDecoration(
                               border:
@@ -50,7 +50,14 @@ class MyHomePage extends StatelessWidget {
                           padding: EdgeInsets.all(10),
                         ),
                         Column(
-                          children: [Text(tr.title), Text(tr.date.toString())],
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(tr.title,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16)),
+                            Text(tr.date.toString(),
+                                style: TextStyle(color: Colors.grey[600]))
+                          ],
                         )
                       ]),
                     )))
