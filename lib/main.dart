@@ -1,5 +1,7 @@
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+// Intl.defaultLocale='pt_BR';
 
 main() => runApp(ExpensesApp());
 
@@ -40,7 +42,9 @@ class MyHomePage extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'R\$  ${tr.value.toStringAsFixed(2)}',
+                            NumberFormat.currency(
+                                    locale: 'pt_BR', symbol: 'R\$')
+                                .format(tr.value),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -70,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              tr.date.toString(),
+                              DateFormat('d  MMM y').format(tr.date),
                               style: TextStyle(
                                 color: Colors.grey[600],
                               ),
