@@ -34,33 +34,53 @@ class MyHomePage extends StatelessWidget {
           ),
           Column(
             children: _transactions
-                .map((tr) => (Card(
-                      child: Row(children: <Widget>[
+                .map(
+                  (tr) => (Card(
+                    child: Row(
+                      children: <Widget>[
                         Container(
-                          child: Text(tr.value.toString(),
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.purple)),
+                          child: Text(
+                            'R\$  ${tr.value.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purple,
+                            ),
+                          ),
                           margin: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
+                            horizontal: 15,
+                            vertical: 10,
+                          ),
                           decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: Colors.purple, width: 2)),
+                            border: Border.all(
+                              color: Colors.purple,
+                              width: 2,
+                            ),
+                          ),
                           padding: EdgeInsets.all(10),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(tr.title,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16)),
-                            Text(tr.date.toString(),
-                                style: TextStyle(color: Colors.grey[600]))
+                            Text(
+                              tr.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              tr.date.toString(),
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                              ),
+                            )
                           ],
                         )
-                      ]),
-                    )))
+                      ],
+                    ),
+                  )),
+                )
                 .toList(),
           )
         ]));
