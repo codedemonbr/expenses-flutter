@@ -4,38 +4,62 @@ class TransactionForm extends StatelessWidget {
   final titleController = TextEditingController();
   final valueController = TextEditingController();
 
+  final void Function(String, double) onSubmit;
+
+  TransactionForm(this.onSubmit, {Key? key}) : super(key: key);
+
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 0.0;
+
+    if (title.isEmpty || value <= 0) {
+      return;
+    }
+
+    onSubmit(title, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
       child: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: InputDecoration(
-                  labelText: 'Título',
-                ),
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            TextField(
+              controller: titleController,
+              onSubmitted: (_) => _submitForm(),
+              decoration: const InputDecoration(
+                labelText: 'Título',
               ),
-              TextField(
-                controller: valueController,
-                decoration: InputDecoration(
-                  labelText: 'Valor R\$',
-                ),
+            ),
+            TextField(
+              controller: valueController,
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
+              onSubmitted: (_) => _submitForm(),
+              decoration: const InputDecoration(
+                labelText: 'Valor (R\$)',
               ),
-              TextButton(
-                child: Text(
-                  'Nova Transacão',
-                  style: TextStyle(color: Colors.purple),
-                ),
-                onPressed: () {
-                  print(titleController.text);
-                  print(valueController.text);
-                },
-              ),
-            ],
-          )),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text(
+                    'Nova Transacão',
+                    style: TextStyle(
+                      color: Colors.purple,
+                    ),
+                  ),
+                  onPressed: _submitForm,
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
