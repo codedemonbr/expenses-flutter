@@ -5,7 +5,6 @@ import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transaction_list.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
-// Intl.defaultLocale='pt_BR';
 
 main() => runApp(ExpensesApp());
 
@@ -51,31 +50,31 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
       id: 't1',
       title: 'Novo Tênis de corrida',
-      value: 310.78,
+      value: 2,
       date: DateTime.now().subtract(Duration(days: 1)),
     ),
     Transaction(
       id: 't2',
       title: 'Conta de Luz',
-      value: 211.30,
+      value: 5,
       date: DateTime.now().subtract(Duration(days: 2)),
     ),
     Transaction(
       id: 't3',
       title: 'Conta de internet',
-      value: 123,
+      value: 6,
       date: DateTime.now().subtract(Duration(days: 3)),
     ),
     Transaction(
       id: 't4',
       title: 'Conta de agua',
-      value: 123,
+      value: 7,
       date: DateTime.now().subtract(Duration(days: 4)),
     ),
     Transaction(
       id: 't5',
       title: 'Conta de agua',
-      value: 99,
+      value: 9,
       date: DateTime.now().subtract(Duration(days: 33)),
     ),
   ];
