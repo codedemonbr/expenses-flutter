@@ -20,7 +20,7 @@ class _TransactionFormState extends State<TransactionForm> {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0.0;
 
-    if (title.isEmpty || value <= 0 ) {
+    if (title.isEmpty || value <= 0) {
       return;
     }
 
